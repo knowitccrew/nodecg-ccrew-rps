@@ -1,0 +1,187 @@
+#teambar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 93px;
+
+  overflow: hidden;
+
+  font-size: 38px;
+  font-size: 34px;
+
+  background-color: black;
+  color: white;
+
+  font-family: "Raleway";
+  font-weight: bold;
+}
+
+#teambar > span {
+  position: absolute;
+  top: 27px;
+}
+
+#teambar > span:last-child {
+  float: right;
+  right: 0px;
+}
+
+/* in order for the translateX(-100%) transform to work we have to put the
+ * padding on the team name (so that the width of the element goes to the
+ * screen edge): */
+#teambar > span:first-child > span:first-child {
+  padding-left: 28px;
+}
+
+/* same for red team. */
+#teambar > span:last-child > span:last-child {
+  /* "red" is shorter than "blue" so we add some padding
+   * to make the team bar symmetrical (same distance from center) */
+  /* padding-right: 48px; */
+
+  /* same distance from screen edge looks nicer actually: */
+  padding-right: 28px;
+}
+
+/*
+.timer > span:nth-child(2) {
+  display: inline-block;
+  width: 0.3em;
+}
+
+.timer > span:first-child {
+  text-align: right;
+}
+
+.timer > span:last-child {
+  text-align: left;
+}
+
+.timer > span:first-child, .timer > span:last-child {
+  display: inline-block;
+  width: 1.45em;
+}
+*/
+
+#teambar > .timer {
+  display: block;
+  left: 50%;
+  top: 45px; /* 93 / 2 */
+  transform: translateX(-50%) translateY(-50%);
+
+  background-color: white;
+  color: black;
+
+  border-radius: 15px;
+  /*
+  font-family: "Montserrat";
+  font-weight: bold;
+  font-size: 42px;
+  letter-spacing: 2px;
+
+  height: 1.2em;
+  */
+
+  /* because width of text changes we set constant width of element and center
+   * text */
+  /* padding: 0.1em 0; */
+
+  font-family: 'Source Code Pro', monospace;
+
+  font-weight: normal;
+  font-size: 45px;
+
+  padding-bottom: 0.15em;
+  text-align: center;
+
+  /* the text isn't visible to begin with, so we need constant height: */
+  height: 1.1em;
+
+  /* animate width: */
+  transition: 0.5s ease-out;
+  width: 0px;
+}
+
+#teambar > .timer.show {
+  /* because width of text changes we set constant width of element and center
+   * text */
+  width: 4em;
+  width: 3.8em;
+}
+
+#teambar > .timer > span {
+  opacity: 0;
+  /* after the width of the box is 100% we can fade in the text: */
+  transition-delay: 0.5s;
+  transition-timing-function: ease-out;
+  transition-duration: 0.5s;
+}
+
+#teambar > .timer.show > span {
+  opacity: 1;
+}
+
+/* add "hide" class and remove "show" to make the animations start in the
+ * reverse order: */
+#teambar > .timer.hide {
+  transition-delay: 0.3s;
+  transition-timing-function: ease-in;
+}
+
+#teambar > .timer.hide > span {
+  transition-delay: 0s;
+  transition-timing-function: ease;
+}
+
+#blue_progress, #red_progress {
+  display: inline-block;
+  transform: translateY(-65px);
+  transition: 0.5s ease;
+  vertical-align: middle;
+}
+
+#blue_progress.show, #red_progress.show {
+  transform: translateY(0px);
+}
+
+.doneCircle, .remCircle {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 0.5em;
+  margin: 0 0.25em;
+}
+
+.remCircle {
+  background-color: #666;
+}
+
+.doneCircle {
+  background-color: white;
+}
+
+/* #blue_progress .doneCircle {
+/*   background-color: #1e88e5; /* blue darken-1 */
+/* }
+/*
+/* #red_progress .doneCircle {
+/*   background-color: #e53935; /* red darken-1 */
+/* } */
+
+.blue_team_name, .red_team_name {
+  display: inline-block;
+  transition: 0.7s ease-out;
+}
+
+.blue_team_name {
+  transform: translateX(-100%);
+}
+
+.red_team_name {
+  transform: translateX(100%);
+}
+
+.blue_team_name.show, .red_team_name.show {
+  transform: translateX(0);
+}
