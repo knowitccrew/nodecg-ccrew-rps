@@ -124,9 +124,6 @@
 /* -------------------------------------------------------------------------- */
 
 .ccrew-header {
-}
-
-.ccrew-header {
   position: absolute;
   top: 0;
   left: 0;
@@ -144,29 +141,31 @@
   font-weight: bold;
 }
 
-.ccrew-header > span {
+.ccrew-header .ccrew-header-left, .ccrew-header .ccrew-header-right {
   position: absolute;
   top: 27px;
+
+  display: inline-block;
+  transition: 0.7s ease-out;
+
+  text-transform: uppercase;
 }
 
-.ccrew-header > span:last-child {
+.ccrew-header .ccrew-header-right {
   float: right;
   right: 0px;
 }
 
-/* in order for the translateX(-100%) transform to work we have to put the
- * padding on the team name (so that the width of the element goes to the
- * screen edge): */
-.ccrew-header > span:first-child > span:first-child {
+.ccrew-header .ccrew-header-left {
+  transform: translateX(-100%);
   padding-left: 28px;
 }
 
-/* same for right side. */
-.ccrew-header > span:last-child > span:last-child {
-  /* "red" is shorter than "blue" so we add some padding
-   * to make the team bar symmetrical (same distance from center) */
-  /* padding-right: 48px; */
-
-  /* same distance from screen edge looks nicer actually: */
+.ccrew-header .ccrew-header-right {
+  transform: translateX(100%);
   padding-right: 28px;
+}
+
+.ccrew-header .ccrew-header-left.show, .ccrew-header-right.show {
+  transform: translateX(0%);
 }

@@ -1,3 +1,6 @@
+const { Component } = React;
+// const PropTypes =
+
 class Progress extends React.Component {
   constructor(props) {
     super(props);
@@ -157,7 +160,7 @@ class TeamBar extends React.Component {
   }
 }
 
-class Header extends React.Component {
+class WaitForShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = { show: false };
@@ -166,26 +169,97 @@ class Header extends React.Component {
   componentDidMount() {
     // wait a little bit before adding classname so that css will trigger a
     // transition animation:
-    setTimeout(() => this.setState({ show: true }), 100);
+    const { ms } = this.props;
+    setTimeout(() => this.setState({ show: true }), ms);
   }
 
   render() {
-    const { style, children } = this.props;
     const { show } = this.state;
-    const className = show ? 'show' : '';
+    const { children } = this.props;
 
-    // const children = Array.isArray(this.props.children) ? this.props.children : [this.props.children];
+    console.log("waitforshow state:", this.state);
+
+    // Clone children and inject our state as props:
+    const elements = Array.isArray(children) ? children : [children];
+
     return (
-      <div className={`ccrew-header ${show}`} style={style}>
-        {children}
+      <div>
+        {elements.map((child, i) => React.cloneElement(child, { ...this.state, key: `wait_for_show_${i}` }))}
       </div>
+    );
+  }
+}
+
+WaitForShow.propTypes = {
+  ms: PropTypes.number,
+};
+
+WaitForShow.defaultProps = {
+  ms: 100,
+};
+
+class Header extends React.Component {
+  render() {
+    const { style, children, show } = this.props;
+    const className = show ? 'show' : '';
+    console.log("header render:", this.props);
+
+    // Clone children and inject remainder props:
+    const elements = Array.isArray(children) ? children : [children];
+
+    const extraProps = Object.assign({}, this.props);
+    delete extraProps.children;
+    delete extraProps.style;
+
+    console.log("extraProps:", extraProps);
+
+    return (
+      <div className={`ccrew-header ${className}`} style={style}>
+        {elements.map((child, i) => React.cloneElement(child, { ...extraProps, key: `header_${i}` }))}
+      </div>
+    );
+  }
+}
+
+Header.propTypes = {
+  show: PropTypes.bool,
+};
+
+Header.defaultProps = {
+  show: true,
+};
+
+class HeaderPart extends React.Component {
+  render() {
+    console.log("headerpart:", this.props);
+    const { children, right, show } = this.props;
+
+    // defaults to left
+    const className = right ? "ccrew-header-right" : "ccrew-header-left";
+    const showClass = show ? 'show' : '';
+
+    return (
+      <span key={className} className={`${className} ${showClass}`}>{children}</span>
+    );
+  }
+}
+
+class RPSHeader extends React.Component {
+  render() {
+    return (
+      <WaitForShow ms={500}>
+        <Header>
+          <HeaderPart>Player one</HeaderPart>
+          <HeaderPart right>Player two</HeaderPart>
+        </Header>
+      </WaitForShow>
     );
   }
 }
 
 ReactDOM.render(
   <InjectReplicants replicantIds={{ background_color: 'backgroundColor' }}>
-    <Header />
+    <RPSHeader key="RPSHeader" />
   </InjectReplicants>,
   document.getElementById('root')
 );
