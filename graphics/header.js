@@ -264,11 +264,17 @@ class RPSHeader extends React.Component {
     return (
       <WaitForShow ms={500}>
         <Header>
-          <HeaderPart left>Player one</HeaderPart>
-          <HeaderPart middle>
+          <HeaderPart left>
+            Player one
             <Progress completed={3} />
           </HeaderPart>
-          <HeaderPart right>Player two</HeaderPart>
+          <HeaderPart middle>
+            1 score 1
+          </HeaderPart>
+          <HeaderPart right>
+            <Progress completed={3} reverse />
+            Player two
+          </HeaderPart>
         </Header>
       </WaitForShow>
     );
