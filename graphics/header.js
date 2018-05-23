@@ -232,14 +232,24 @@ Header.defaultProps = {
 class HeaderPart extends React.Component {
   render() {
     console.log("headerpart:", this.props);
-    const { children, right, show } = this.props;
+    const { children, left, right, show } = this.props;
 
-    // defaults to left
-    const className = right ? "ccrew-header-right" : "ccrew-header-left";
-    const showClass = show ? 'show' : '';
+    const classNames = ['ccrew-header-element'];
+
+    if (left === true) {
+      classNames.push('ccrew-header-left');
+    }
+
+    if (right === true) {
+      classNames.push('ccrew-header-right');
+    }
+
+    if (show) {
+      classNames.push('show');
+    }
 
     return (
-      <span key={className} className={`${className} ${showClass}`}>{children}</span>
+      <div className={classNames.join(' ')}>{children}</div>
     );
   }
 }
@@ -249,7 +259,7 @@ class RPSHeader extends React.Component {
     return (
       <WaitForShow ms={500}>
         <Header>
-          <HeaderPart>Player one</HeaderPart>
+          <HeaderPart left>Player one</HeaderPart>
           <HeaderPart right>Player two</HeaderPart>
         </Header>
       </WaitForShow>

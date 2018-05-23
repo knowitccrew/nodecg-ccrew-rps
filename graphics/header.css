@@ -141,13 +141,15 @@
   font-weight: bold;
 }
 
-.ccrew-header .ccrew-header-left, .ccrew-header .ccrew-header-right {
+.ccrew-header .ccrew-header-element {
   position: absolute;
   top: 27px;
 
   display: inline-block;
   transition: 0.7s ease-out;
+}
 
+.ccrew-header .ccrew-header-left, .ccrew-header .ccrew-header-right {
   text-transform: uppercase;
 }
 
