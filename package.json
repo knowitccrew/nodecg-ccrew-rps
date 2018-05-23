@@ -1,0 +1,42 @@
+{
+  "name": "nodecg-ccrew-rps",
+  "version": "0.0.0",
+  "description": "Creative Crew Rock Paper Scissors",
+  "homepage": "https://knowit.no",
+  "author": {
+    "name": "Knowit Creative Crew",
+    "email": "creative.crew@knowit.no",
+    "url": "https://knowit.no"
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "~0.9.0",
+    "dashboardPanels": [
+      {
+        "name": "panel-base",
+        "title": "Base",
+        "width": 4,
+        "file": "panel-base.html",
+        "headerColor": "#9f9bbd"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "base.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  "repository": "https://github.com/nodecg/nodecg.git",
+  "private": true
+}
