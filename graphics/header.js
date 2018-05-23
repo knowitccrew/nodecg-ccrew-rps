@@ -31,7 +31,7 @@ class Progress extends React.Component {
   }
 
   render() {
-    const { reverse, id } = this.props;
+    const { reverse, id, stages } = this.props;
     const { show } = this.state;
     const completed = Number(this.state.completed);
 
@@ -43,7 +43,7 @@ class Progress extends React.Component {
     // console.log("COMPLETED", completed);
 
     const done = Array.from(Array(completed)).map(() => <span className="doneCircle" />);
-    const remaining = Array.from(Array(5 - completed)).map(() => <span className="remCircle" />);
+    const remaining = Array.from(Array(stages - completed)).map(() => <span className="remCircle" />);
 
     const className = show ? 'show' : '';
     if (reverse) {
@@ -58,6 +58,7 @@ class Progress extends React.Component {
 
 Progress.defaultProps = {
   completed: 0,
+  stages: 5,
   reverse: false,
 };
 
@@ -266,13 +267,13 @@ class RPSHeader extends React.Component {
         <Header>
           <HeaderPart left>
             Player one
-            <Progress completed={3} />
+            <Progress completed={3} stages={7} />
           </HeaderPart>
           <HeaderPart middle>
             1 score 1
           </HeaderPart>
           <HeaderPart right>
-            <Progress completed={3} reverse />
+            <Progress completed={3} stages={7} reverse />
             Player two
           </HeaderPart>
         </Header>
