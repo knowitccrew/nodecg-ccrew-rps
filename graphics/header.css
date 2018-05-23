@@ -1,68 +1,3 @@
-#teambar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 93px;
-
-  overflow: hidden;
-
-  font-size: 38px;
-  font-size: 34px;
-
-  background-color: black;
-  color: white;
-
-  font-family: "Raleway";
-  font-weight: bold;
-}
-
-#teambar > span {
-  position: absolute;
-  top: 27px;
-}
-
-#teambar > span:last-child {
-  float: right;
-  right: 0px;
-}
-
-/* in order for the translateX(-100%) transform to work we have to put the
- * padding on the team name (so that the width of the element goes to the
- * screen edge): */
-#teambar > span:first-child > span:first-child {
-  padding-left: 28px;
-}
-
-/* same for red team. */
-#teambar > span:last-child > span:last-child {
-  /* "red" is shorter than "blue" so we add some padding
-   * to make the team bar symmetrical (same distance from center) */
-  /* padding-right: 48px; */
-
-  /* same distance from screen edge looks nicer actually: */
-  padding-right: 28px;
-}
-
-/*
-.timer > span:nth-child(2) {
-  display: inline-block;
-  width: 0.3em;
-}
-
-.timer > span:first-child {
-  text-align: right;
-}
-
-.timer > span:last-child {
-  text-align: left;
-}
-
-.timer > span:first-child, .timer > span:last-child {
-  display: inline-block;
-  width: 1.45em;
-}
-*/
 
 #teambar > .timer {
   display: block;
@@ -184,4 +119,54 @@
 
 .blue_team_name.show, .red_team_name.show {
   transform: translateX(0);
+}
+
+/* -------------------------------------------------------------------------- */
+
+.ccrew-header {
+}
+
+.ccrew-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 93px;
+
+  overflow: hidden;
+
+  font-size: 34px;
+
+  background-color: black;
+  color: white;
+
+  font-family: "Raleway";
+  font-weight: bold;
+}
+
+.ccrew-header > span {
+  position: absolute;
+  top: 27px;
+}
+
+.ccrew-header > span:last-child {
+  float: right;
+  right: 0px;
+}
+
+/* in order for the translateX(-100%) transform to work we have to put the
+ * padding on the team name (so that the width of the element goes to the
+ * screen edge): */
+.ccrew-header > span:first-child > span:first-child {
+  padding-left: 28px;
+}
+
+/* same for right side. */
+.ccrew-header > span:last-child > span:last-child {
+  /* "red" is shorter than "blue" so we add some padding
+   * to make the team bar symmetrical (same distance from center) */
+  /* padding-right: 48px; */
+
+  /* same distance from screen edge looks nicer actually: */
+  padding-right: 28px;
 }

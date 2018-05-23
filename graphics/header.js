@@ -157,9 +157,35 @@ class TeamBar extends React.Component {
   }
 }
 
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { show: false };
+  }
+
+  componentDidMount() {
+    // wait a little bit before adding classname so that css will trigger a
+    // transition animation:
+    setTimeout(() => this.setState({ show: true }), 100);
+  }
+
+  render() {
+    const { style, children } = this.props;
+    const { show } = this.state;
+    const className = show ? 'show' : '';
+
+    // const children = Array.isArray(this.props.children) ? this.props.children : [this.props.children];
+    return (
+      <div className={`ccrew-header ${show}`} style={style}>
+        {children}
+      </div>
+    );
+  }
+}
+
 ReactDOM.render(
   <InjectReplicants replicantIds={{ background_color: 'backgroundColor' }}>
-    <TeamBar />
+    <Header />
   </InjectReplicants>,
   document.getElementById('root')
 );
