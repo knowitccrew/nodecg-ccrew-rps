@@ -171,3 +171,8 @@
 .ccrew-header .ccrew-header-left.show, .ccrew-header-right.show {
   transform: translateX(0%);
 }
+
+.ccrew-header .ccrew-header-middle {
+  margin-left: 50%;
+  transform: translateX(-50%);
+}

@@ -231,13 +231,16 @@ Header.defaultProps = {
 
 class HeaderPart extends React.Component {
   render() {
-    console.log("headerpart:", this.props);
-    const { children, left, right, show } = this.props;
+    const { children, left, middle, right, show } = this.props;
 
     const classNames = ['ccrew-header-element'];
 
     if (left === true) {
       classNames.push('ccrew-header-left');
+    }
+
+    if (middle === true) {
+      classNames.push('ccrew-header-middle');
     }
 
     if (right === true) {
@@ -247,6 +250,8 @@ class HeaderPart extends React.Component {
     if (show) {
       classNames.push('show');
     }
+
+    console.log("headerpart:", this.props);
 
     return (
       <div className={classNames.join(' ')}>{children}</div>
@@ -260,6 +265,9 @@ class RPSHeader extends React.Component {
       <WaitForShow ms={500}>
         <Header>
           <HeaderPart left>Player one</HeaderPart>
+          <HeaderPart middle>
+            <Progress completed={3} />
+          </HeaderPart>
           <HeaderPart right>Player two</HeaderPart>
         </Header>
       </WaitForShow>
