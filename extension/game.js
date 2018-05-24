@@ -1,5 +1,7 @@
 'use strict';
 
+const { reset_game, set_round_win } = require('./game_lib');
+
 module.exports = function (nodecg) {
 
   const rounds = 7;
@@ -56,27 +58,12 @@ module.exports = function (nodecg) {
 
   nodecg.listenFor('set_round_win', (data) => {
     console.log(`Got set_round_win: "${data}"`);
-    const newGame = game.value.slice();
-
-    if (game.value.length >= rounds) {
-      console.log(`Can't set win: Game is already full!`, game.value);
-
-    } else if (data == 1) {
-      newGame.push(1);
-      game.value = newGame;
-
-    } else if (data == 2) {
-      newGame.push(2);
-      game.value = newGame;
-
-    } else {
-      console.log(`Can't set win: Invalid value!`);
-    }
+    set_round_win({ data, game });
   });
 
   nodecg.listenFor('reset_game', (data) => {
     console.log(`Got reset_game: "${data}"`);
-    game.value = [];
+    reset_game({ data, game });
   });
 
 };
