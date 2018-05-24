@@ -43,9 +43,11 @@ class InjectReplicants extends React.Component {
     // Clone children and inject our state as props:
     const elements = Array.isArray(children) ? children : [children];
 
-    // {JSON.stringify(this.props.replicantIds)}
+    const extraProps = Object.assign({}, this.props);
+    delete extraProps.children;
+
     return (
-      <div>
+      <div { ...extraProps }>
         {elements.map((child, i) => React.cloneElement(child, { ...this.state, key: i }))}
       </div>
     );
