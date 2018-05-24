@@ -38,6 +38,11 @@
       {
         "file": "header.html",
         "width": 1920,
+        "height": 93
+      },
+      {
+        "file": "footer.html",
+        "width": 1920,
         "height": 1080
       }
     ]
