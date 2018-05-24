@@ -161,7 +161,7 @@ class HeaderPart extends React.Component {
   }
 }
 
-class RPSHeader extends React.Component {
+class RPSBattleHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -179,8 +179,16 @@ class RPSHeader extends React.Component {
     return (
       <WaitForShow ms={500}>
         <Header>
+          <HeaderPart left>
+            Player one
+            &ensp;<Progress completed={p1Score} stages={7} />
+          </HeaderPart>
           <HeaderPart middle>
-            Knowit Mangekamp
+            {p1Score} score {p2Score}
+          </HeaderPart>
+          <HeaderPart right>
+            <Progress completed={p2Score} stages={7} reverse />
+            &ensp;Player two
           </HeaderPart>
         </Header>
       </WaitForShow>
@@ -190,7 +198,8 @@ class RPSHeader extends React.Component {
 
 ReactDOM.render(
   <InjectReplicants replicantIds={{ background_color: 'backgroundColor' }}>
-    <RPSHeader key="RPSHeader" />
+    <RPSBattleHeader />
   </InjectReplicants>,
   document.getElementById('root')
 );
+

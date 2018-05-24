@@ -49,6 +49,11 @@
         "file": "battleFooter.html",
         "width": 1920,
         "height": 1080
+      },
+      {
+        "file": "battleHeader.html",
+        "width": 1920,
+        "height": 93
       }
     ]
   },
