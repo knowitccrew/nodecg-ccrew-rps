@@ -1,6 +1,10 @@
 const { Component } = React;
 // const PropTypes =
 
+const WonCircle = () => <span className="ccrew-circle ccrew-circle-won" />;
+const LostCircle = () => <span className="ccrew-circle ccrew-circle-lost" />;
+const NeitherCircle = () => <span className="ccrew-circle" />;
+
 class RPSProgress extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +35,7 @@ class RPSProgress extends React.Component {
   // }
 
   render() {
-    const { reverse, id, stages, winnerPerRound } = this.props;
+    const { reverse, id, stages, winnerPerRound, player } = this.props;
     const { show } = this.state;
     const completed = Number(this.state.completed);
 
@@ -43,24 +47,32 @@ class RPSProgress extends React.Component {
 
     // console.log("COMPLETED", completed);
 
-    const done = Array.from(Array(completed)).map((_, i) => <span key={`done_${i}`}className="doneCircle" />);
-    const remaining = Array.from(Array(stages - completed)).map((_, i) => <span key={`notdone_${i}`} className="remCircle" />);
+    const circles = winnerPerRound.map(who => {
+      if (player === who) {
+        return <WonCircle />;
+      } else if (who === 1 || who === 2) {
+        return <LostCircle />;
+      } else {
+        return <NeitherCircle />;
+      }
+    });
+
 
     const className = show ? 'show' : '';
     if (reverse) {
-      const circles = remaining.concat(done);
       return <span id={id} className={className}>{circles}</span>
     }
 
-    const circles = done.concat(remaining);
     return <span id={id} className={className}>{circles}</span>;
   }
 }
 
 RPSProgress.defaultProps = {
   completed: 0,
-  stages: 5,
+  player: 2,
   reverse: false,
+  stages: 5,
+  winnerPerRound: [],
 };
 
 class WaitForShow extends React.Component {
