@@ -1,40 +1,41 @@
 const { Component } = React;
 // const PropTypes =
 
-class Progress extends React.Component {
+class RPSProgress extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = { show: false, completed: props.completed || 0 };
 
-    if (props.id) {
-      const { replicant = nodecg.Replicant(props.id) } = props;
+    // if (props.id) {
+    //   const { replicant = nodecg.Replicant(props.id) } = props;
 
-      // const cb = stage => this.setState({ show: true, completed: stage - 1 });
-      const cb = stage => {
-        this.setState({ completed: stage - 1 });
-        // wait a second before showing:
-        setTimeout(() => this.setState({ show: true }), 700);
-      };
-      replicant.on('change', cb);
-      this.unsubscribe = () => replicant.removeListener('change', cb);
+    //   // const cb = stage => this.setState({ show: true, completed: stage - 1 });
+    //   const cb = stage => {
+    //     this.setState({ completed: stage - 1 });
+    //     // wait a second before showing:
+    //     setTimeout(() => this.setState({ show: true }), 700);
+    //   };
+    //   replicant.on('change', cb);
+    //   this.unsubscribe = () => replicant.removeListener('change', cb);
 
-      this.replicant = replicant;
-    }
+    //   this.replicant = replicant;
+    // }
   }
 
-  componentWillUnmount() {
-    if (this.unsubscribe) {
-      // remember to remove old event listener:
-      this.unsubscribe();
-    }
-  }
+  // componentWillUnmount() {
+  //   if (this.unsubscribe) {
+  //     // remember to remove old event listener:
+  //     this.unsubscribe();
+  //   }
+  // }
 
   render() {
-    const { reverse, id, stages } = this.props;
+    const { reverse, id, stages, winnerPerRound } = this.props;
     const { show } = this.state;
     const completed = Number(this.state.completed);
 
+    console.log("winnerPerRound", winnerPerRound);
     if (completed < 0 || Number.isNaN(completed)) {
       // Waiting to start
       return <span />;
@@ -42,8 +43,8 @@ class Progress extends React.Component {
 
     // console.log("COMPLETED", completed);
 
-    const done = Array.from(Array(completed)).map(() => <span className="doneCircle" />);
-    const remaining = Array.from(Array(stages - completed)).map(() => <span className="remCircle" />);
+    const done = Array.from(Array(completed)).map((_, i) => <span key={`done_${i}`}className="doneCircle" />);
+    const remaining = Array.from(Array(stages - completed)).map((_, i) => <span key={`notdone_${i}`} className="remCircle" />);
 
     const className = show ? 'show' : '';
     if (reverse) {
@@ -56,7 +57,7 @@ class Progress extends React.Component {
   }
 }
 
-Progress.defaultProps = {
+RPSProgress.defaultProps = {
   completed: 0,
   stages: 5,
   reverse: false,
@@ -104,7 +105,7 @@ class Header extends React.Component {
   render() {
     const { style, children, show } = this.props;
     const className = show ? 'show' : '';
-    console.log("header render:", this.props);
+    // console.log("header render:", this.props);
 
     // Clone children and inject remainder props:
     const elements = Array.isArray(children) ? children : [children];
@@ -113,7 +114,7 @@ class Header extends React.Component {
     delete extraProps.children;
     delete extraProps.style;
 
-    console.log("extraProps:", extraProps);
+    // console.log("extraProps:", extraProps);
 
     return (
       <div className={`ccrew-header ${className}`} style={style}>
@@ -153,7 +154,7 @@ class HeaderPart extends React.Component {
       classNames.push('show');
     }
 
-    console.log("headerpart:", this.props);
+    // console.log("headerpart:", this.props);
 
     return (
       <div className={classNames.join(' ')}>{children}</div>
@@ -181,13 +182,15 @@ class RPSBattleHeader extends React.Component {
         <Header>
           <HeaderPart left>
             Player one
-            &ensp;<Progress completed={p1Score} stages={7} />
+            &ensp;<RPSProgress completed={p1Score} stages={7} />
           </HeaderPart>
           <HeaderPart middle>
             {p1Score} score {p2Score}
           </HeaderPart>
           <HeaderPart right>
-            <Progress completed={p2Score} stages={7} reverse />
+            <InjectReplicants replicantIds={{ rps_game: 'winnerPerRound' }} >
+              <RPSProgress completed={p2Score} stages={7} reverse />
+            </InjectReplicants>
             &ensp;Player two
           </HeaderPart>
         </Header>
