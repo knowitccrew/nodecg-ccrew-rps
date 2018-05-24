@@ -1,3 +1,5 @@
+const { Component } = React;
+
 /*
  * SomeComponent below will have 'someReplicant' available as a prop under 'propsName'.
  *
@@ -572,28 +574,16 @@ class Select extends React.Component {
   }
 }
 
-const ModalTrigger = ({ forId }) => {
-  return <a class="waves-effect waves-light btn modal-trigger" href={`#${forId}`}>Modal</a>;
-};
+class Footer extends Component {
+  render() {
+    const { children, style } = this.props;
 
-class Modal extends React.Component {
-
-  componentDidMount() {
-    $('.modal').modal();
-  }
-
-    render() {
-      const { children, id } = this.props;
-
-      return (
-        <div id={id} className="modal">
-          <div className="modal-content">
-            {children}
-          </div>
-          <div className="modal-footer">
-            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat">OK</a>
-          </div>
+    return (
+      <div className="ccrew-footer" style={style}>
+        <div class="valign">
+          {children}
         </div>
-      );
-    }
+      </div>
+    );
+  }
 }

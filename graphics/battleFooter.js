@@ -1,14 +1,15 @@
 const { Component } = React;
 
-const RPSFooter = () => (
+const RPSBattleFooter = () => (
   <Footer style={{ height: '93px' }}>
-    Knowit Mangekamp - Stein, Saks, Papir
+    Knowit Mangekamp!
   </Footer>
 );
 
 ReactDOM.render(
   <InjectReplicants replicantIds={{ 'background_color': 'backgroundColor' }}>
-    <RPSFooter />
+    <RPSBattleFooter />
   </InjectReplicants>,
   document.getElementById('root')
 );
+
