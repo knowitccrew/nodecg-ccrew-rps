@@ -58,8 +58,8 @@ module.exports = function (nodecg) {
     console.log(`Got set_round_win: "${data}"`);
     const newGame = game.value.slice();
 
-    if (game.value >= rounds) {
-      console.log(`Can't set win: Game is already full!`, game);
+    if (game.value.length >= rounds) {
+      console.log(`Can't set win: Game is already full!`, game.value);
 
     } else if (data == 1) {
       newGame.push(1);
@@ -68,9 +68,15 @@ module.exports = function (nodecg) {
     } else if (data == 2) {
       newGame.push(2);
       game.value = newGame;
+
     } else {
       console.log(`Can't set win: Invalid value!`);
     }
+  });
+
+  nodecg.listenFor('reset_game', (data) => {
+    console.log(`Got reset_game: "${data}"`);
+    game.value = [];
   });
 
 };

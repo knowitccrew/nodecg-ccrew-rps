@@ -47,23 +47,23 @@ class RPSProgress extends React.Component {
 
     // console.log("COMPLETED", completed);
 
-    const circles = winnerPerRound.map(who => {
+    const rounds = winnerPerRound.slice();
+    while (rounds.length < stages) {
+      rounds.push(null);
+    }
+
+    const circles = rounds.map((who, i) => {
       if (player === who) {
-        return <WonCircle />;
+        return <WonCircle key={i} />;
       } else if (who === 1 || who === 2) {
-        return <LostCircle />;
+        return <LostCircle key={i} />;
       } else {
-        return <NeitherCircle />;
+        return <NeitherCircle key={i} />;
       }
     });
 
-
     const className = show ? 'show' : '';
-    if (reverse) {
-      return <span id={id} className={className}>{circles}</span>
-    }
-
-    return <span id={id} className={className}>{circles}</span>;
+    return <span id={id} className={className}>{reverse ? circles.slice().reverse() : circles}</span>;
   }
 }
 
@@ -193,15 +193,17 @@ class RPSBattleHeader extends React.Component {
       <WaitForShow ms={500}>
         <Header>
           <HeaderPart left>
-            Player one
-            &ensp;<RPSProgress completed={p1Score} stages={7} />
+            Player one&nbsp;
+            <InjectReplicants replicantIds={{ rps_game: 'winnerPerRound' }} style={{ display: 'inline-block' }}>
+              <RPSProgress player={1} completed={p2Score} stages={7} />
+            </InjectReplicants>
           </HeaderPart>
           <HeaderPart middle>
             {p1Score} score {p2Score}
           </HeaderPart>
           <HeaderPart right>
-            <InjectReplicants replicantIds={{ rps_game: 'winnerPerRound' }} >
-              <RPSProgress completed={p2Score} stages={7} reverse />
+            <InjectReplicants replicantIds={{ rps_game: 'winnerPerRound' }} style={{ display: 'inline-block' }}>
+              <RPSProgress player={2} completed={p2Score} stages={7} reverse />
             </InjectReplicants>
             &ensp;Player two
           </HeaderPart>
