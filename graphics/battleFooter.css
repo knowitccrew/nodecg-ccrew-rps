@@ -39,15 +39,12 @@ html, body  {
 .ccrew-battlefooter .ccrew-battlefooter-bar {
   box-sizing: content-box;
   height: 100%;
-  width: 37%;
-  width: 50%;
   width: calc(50% - 5em);
 
-  display: inline-block;
   display: block;
 
   text-transform: uppercase;
-  background-color: lightblue;
+  background-color: black;
 }
 
 .ccrew-battlefooter .ccrew-battlefooter-bar-win {
@@ -70,15 +67,11 @@ html, body  {
 }
 
 .ccrew-footer .ccrew-battlefooter-bar-left {
-  margin-right: -3em;
 }
 
 .ccrew-footer .ccrew-battlefooter-bar-right {
   float: right;
   right: 0;
-  /*
-  width: calc(50% - 3em);
-  */
 }
 
 .ccrew-footer .ccrew-battlefooter-bar-middle {
@@ -87,7 +80,6 @@ html, body  {
 }
 
 .logobox {
-  display: inline-block;
   box-sizing: content-box;
 
   border: 1px solid black;
