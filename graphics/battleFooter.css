@@ -37,11 +37,14 @@ html, body  {
 }
 
 .ccrew-battlefooter .ccrew-battlefooter-bar {
+  box-sizing: content-box;
   height: 100%;
-  width: 50%;
   width: 37%;
+  width: 50%;
+  width: calc(50% - 5em);
 
   display: inline-block;
+  display: block;
 
   text-transform: uppercase;
   background-color: lightblue;
@@ -66,9 +69,16 @@ html, body  {
   */
 }
 
+.ccrew-footer .ccrew-battlefooter-bar-left {
+  margin-right: -3em;
+}
+
 .ccrew-footer .ccrew-battlefooter-bar-right {
   float: right;
   right: 0;
+  /*
+  width: calc(50% - 3em);
+  */
 }
 
 .ccrew-footer .ccrew-battlefooter-bar-middle {
