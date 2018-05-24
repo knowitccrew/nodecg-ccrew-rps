@@ -70,5 +70,8 @@
     ]
   },
   "repository": "https://github.com/nodecg/nodecg.git",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "material-design-icons": "^3.0.1"
+  }
 }

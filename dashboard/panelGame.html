@@ -1,9 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-</head>
-<body>
+  <meta charset="UTF-8">
+  <!--Import Google Icon Font-->
+  <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+  <link rel="stylesheet" href="deps/iconfont/material-icons.css">
 
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
+  <link rel="stylesheet" href="deps/materialize/css/materialize.min.css">
+
+  <!-- <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script> -->
+  <!-- <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script> -->
+
+  <script crossorigin src="deps/react.production.min.js"></script>
+  <script crossorigin src="deps/react-dom.production.min.js"></script>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script> -->
+  <script src="deps/babel.min.js"></script>
+
+  <!-- Let browser know website is optimized for mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+  <!-- src="https://code.jquery.com/jquery-3.3.1.min.js" -->
+  <script
+    src="deps/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+  </script>
+
+  <!-- Compiled and minified JavaScript -->
+  <!--- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
+  <script src="deps/materialize/js/materialize.min.js"></script>
+
+  <div id="root">
+    This is supposed to contain a React rendered component, something went wrong!
+    Check the logs for any errors.
+  </div>
+
+  <script type="text/babel" src="shared/components.js"></script>
+  <script type="text/babel" src="panelGame.js"></script>
 </body>
 </html>
