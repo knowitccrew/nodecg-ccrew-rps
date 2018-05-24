@@ -6,6 +6,8 @@ module.exports = function (nodecg) {
   const gamep1 = nodecg.Replicant('rps_game_p1', { defaultValue: [] });
   const gamep2 = nodecg.Replicant('rps_game_p2', { defaultValue: [] });
 
+  const game = nodecg.Replicant('rps_game', { defaultValue: [] });
+
   const stringToValue = {
     'true': true,
     't': true,
@@ -50,6 +52,25 @@ module.exports = function (nodecg) {
 
   nodecg.listenFor('finalize', (data) => {
     console.log(`Got finalize: "${data}"`);
+  });
+
+  nodecg.listenFor('set_round_win', (data) => {
+    console.log(`Got set_round_win: "${data}"`);
+    const newGame = game.value.slice();
+
+    if (game.value >= rounds) {
+      console.log(`Can't set win: Game is already full!`, game);
+
+    } else if (data == 1) {
+      newGame.push(1);
+      game.value = newGame;
+
+    } else if (data == 2) {
+      newGame.push(2);
+      game.value = newGame;
+    } else {
+      console.log(`Can't set win: Invalid value!`);
+    }
   });
 
 };
