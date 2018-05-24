@@ -1,3 +1,9 @@
+html, body  {
+  height: 93px;
+  width: 100%;
+  margin: 0
+}
+
 .valign {
   /* must be block or perhaps inline-block */
   position: relative;
@@ -6,10 +12,12 @@
 }
 
 .ccrew-footer {
+  /*
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
+  */
 
   height: 125px;
 
@@ -21,6 +29,8 @@
   font-size: 34px;
 }
 
-.ccrew-footer .ccrew-footer-inner {
+.ccrew-footer .ccrew-battlefooter-bar {
   height: 100%;
+  width: 50%;
+  background-color: lightblue;
 }

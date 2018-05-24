@@ -576,14 +576,24 @@ class Select extends React.Component {
 
 class Footer extends Component {
   render() {
-    const { children, style } = this.props;
+    const { children, style, valign, innerClassName } = this.props;
+
+    const innerClasses = ['ccrew-footer', 'ccrew-footer-inner', innerClassName];
+    if (valign) {
+      innerClasses.poush('valign');
+    }
 
     return (
       <div className="ccrew-footer" style={style}>
-        <div class="valign">
+        <div className={innerClasses.join(' ')}>
           {children}
         </div>
       </div>
     );
   }
 }
+
+Footer.defaultProps = {
+  valign: true,
+  innerClassName: '',
+};
