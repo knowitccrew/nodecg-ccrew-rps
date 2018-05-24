@@ -1,19 +1,28 @@
-class Omnibar extends React.Component {
+const { Component } = React;
+
+class Footer extends Component {
   render() {
-    const { backgroundColor } = this.props;
+    const { children, style } = this.props;
+
     return (
-      <div id="omnibar" class="placeholder" style={{ backgroundColor }}>
+      <div className="ccrew-footer" style={style}>
         <div class="valign">
-          Knowit Capture the Flag Game Show - Kiel Edition
+          {children}
         </div>
       </div>
     );
   }
 }
 
+const RPSFooter = () => (
+  <Footer style={{ height: '93px' }}>
+    Knowit Mangekamp - Stein, Saks, Papir
+  </Footer>
+);
+
 ReactDOM.render(
   <InjectReplicants replicantIds={{ 'background_color': 'backgroundColor' }}>
-    <Omnibar />
+    <RPSFooter />
   </InjectReplicants>,
   document.getElementById('root')
 );
