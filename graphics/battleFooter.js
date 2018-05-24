@@ -3,11 +3,13 @@ const { Component } = React;
 class PlayerBar extends Component {
   constructor(props) {
     super(props);
+    console.log("PROPS", props);
   }
 
   render() {
-    const { children, left, right } = this.props;
+    const { children, left, right, lose, win } = this.props;
 
+    const elements = Array.isArray(children) ? children.slice() : [children];
     const classNames = ["ccrew-battlefooter-bar"];
 
     if (left) {
@@ -18,13 +20,37 @@ class PlayerBar extends Component {
       classNames.push("ccrew-battlefooter-bar-right");
     }
 
+    if (win) {
+      classNames.push("ccrew-battlefooter-bar-win");
+      if (elements.length === 0) {
+        elements.push('win');
+      }
+    }
+
+    if (lose) {
+      classNames.push("ccrew-battlefooter-bar-lose");
+      if (elements.length === 0) {
+        elements.push('lose');
+      }
+    }
+
     return (
       <div className={classNames.join(" ")}>
-        {children}
+        <VAlign>
+          {elements}
+        </VAlign>
       </div>
     );
   }
 }
+
+PlayerBar.defaultProps = {
+  children: [],
+  left: false,
+  right: false,
+  lose: false,
+  win: false,
+};
 
 const VAlign = ({ children }) => <div className="valign">{children}</div>;
 
@@ -36,16 +62,8 @@ const BattleFooter = ({ children }) => (
 
 const RPSBattleFooter = () => (
   <BattleFooter>
-    <PlayerBar left>
-      <VAlign>
-        A
-      </VAlign>
-    </PlayerBar>
-    <PlayerBar right>
-      <VAlign>
-        B
-      </VAlign>
-    </PlayerBar>
+    <PlayerBar left win />
+    <PlayerBar right lose />
   </BattleFooter>
 );
 

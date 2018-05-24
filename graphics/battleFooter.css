@@ -32,15 +32,17 @@ html, body  {
 .ccrew-battlefooter .ccrew-battlefooter-bar {
   height: 100%;
   width: 50%;
-  background-color: lightblue;
 
   display: inline-block;
+
+  text-transform: uppercase;
+  background-color: lightblue;
 }
 
-.ccrew-battlefooter .ccrew-battlefooter-bar-left {
-  background-color: lightgreen;
+.ccrew-battlefooter .ccrew-battlefooter-bar-win {
+  background-color: darkcyan;
 }
 
-.ccrew-battlefooter .ccrew-battlefooter-bar-right {
-  background-color: orange;
+.ccrew-battlefooter .ccrew-battlefooter-bar-lose {
+  background-color: crimson;
 }
