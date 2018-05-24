@@ -11,25 +11,25 @@ html, body  {
   transform: translateY(-50%);
 }
 
-.ccrew-footer {
-  /*
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  */
-
-  height: 125px;
+.ccrew-battlefooter {
+  height: 93px;
 
   background-color: black;
   color: white;
-  text-align: center;
 
   font-family: "Raleway";
   font-size: 34px;
 }
 
-.ccrew-footer .ccrew-battlefooter-bar {
+.ccrew-battlefooter .ccrew-footer-inner {
+  height: 100%;
+}
+
+.ccrew-battlefooter .ccrew-footer-inner > * {
+  text-align: center;
+}
+
+.ccrew-battlefooter .ccrew-battlefooter-bar {
   height: 100%;
   width: 50%;
   background-color: lightblue;
@@ -37,11 +37,10 @@ html, body  {
   display: inline-block;
 }
 
-.ccrew-footer .ccrew-battlefooter-bar-left {
+.ccrew-battlefooter .ccrew-battlefooter-bar-left {
   background-color: lightgreen;
 }
 
-.ccrew-footer .ccrew-battlefooter-bar-right {
+.ccrew-battlefooter .ccrew-battlefooter-bar-right {
   background-color: orange;
-
 }

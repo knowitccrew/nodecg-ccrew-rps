@@ -28,8 +28,14 @@ class PlayerBar extends Component {
 
 const VAlign = ({ children }) => <div className="valign">{children}</div>;
 
+const BattleFooter = ({ children }) => (
+  <Footer style={{ height: '93px' }} valign={false} className={'ccrew-battlefooter'}>
+    {children}
+  </Footer>
+);
+
 const RPSBattleFooter = () => (
-  <Footer style={{ height: '93px' }} valign={false}>
+  <BattleFooter>
     <PlayerBar left>
       <VAlign>
         A
@@ -40,7 +46,7 @@ const RPSBattleFooter = () => (
         B
       </VAlign>
     </PlayerBar>
-  </Footer>
+  </BattleFooter>
 );
 
 ReactDOM.render(
