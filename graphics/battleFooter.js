@@ -95,8 +95,8 @@ const LogoBox = () => (
 const RPSBattleFooter = () => (
   <div className="rps-battlefooter">
     <BattleFooter>
-      <PlayerBar right lose />
-      <PlayerBar left />
+      <PlayerBar right win />
+      <PlayerBar left lose />
     </BattleFooter>
     <LogoBox />
   </div>

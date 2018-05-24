@@ -54,6 +54,11 @@
         "file": "battleHeader.html",
         "width": 1920,
         "height": 93
+      },
+      {
+        "file": "api.html",
+        "width": 800,
+        "height": 600
       }
     ]
   },
