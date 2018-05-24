@@ -35,6 +35,11 @@ const RPSBattleFooter = () => (
         A
       </VAlign>
     </PlayerBar>
+    <PlayerBar right>
+      <VAlign>
+        B
+      </VAlign>
+    </PlayerBar>
   </Footer>
 );
 

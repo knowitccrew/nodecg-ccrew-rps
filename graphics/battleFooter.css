@@ -33,4 +33,15 @@ html, body  {
   height: 100%;
   width: 50%;
   background-color: lightblue;
+
+  display: inline-block;
+}
+
+.ccrew-footer .ccrew-battlefooter-bar-left {
+  background-color: lightgreen;
+}
+
+.ccrew-footer .ccrew-battlefooter-bar-right {
+  background-color: orange;
+
 }
