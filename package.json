@@ -27,6 +27,13 @@
         "width": 4,
         "file": "panel-base.html",
         "headerColor": "#9f9bbd"
+      },
+      {
+        "name": "panelGame",
+        "title": "Game",
+        "width": 4,
+        "file": "panelGame.html",
+        "headerColor": "#9f9bbd"
       }
     ],
     "graphics": [
