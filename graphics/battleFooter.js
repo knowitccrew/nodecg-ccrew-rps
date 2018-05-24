@@ -54,17 +54,52 @@ PlayerBar.defaultProps = {
 
 const VAlign = ({ children }) => <div className="valign">{children}</div>;
 
+class FooterPart extends React.Component {
+  render() {
+    const { children, left, middle, right, show } = this.props;
+
+    const classNames = ['ccrew-footer-element'];
+
+    if (left === true) {
+      classNames.push('ccrew-footer-left');
+    }
+
+    if (middle === true) {
+      classNames.push('ccrew-footer-middle');
+    }
+
+    if (right === true) {
+      classNames.push('ccrew-footer-right');
+    }
+
+    if (show) {
+      classNames.push('show');
+    }
+
+    return (
+      <div className={classNames.join(' ')}>{children}</div>
+    );
+  }
+}
+
 const BattleFooter = ({ children }) => (
   <Footer style={{ height: '93px' }} valign={false} className={'ccrew-battlefooter'}>
     {children}
   </Footer>
 );
 
+const LogoBox = () => (
+  <div className="logobox">knowit</div>
+);
+
 const RPSBattleFooter = () => (
-  <BattleFooter>
-    <PlayerBar left win />
-    <PlayerBar right lose />
-  </BattleFooter>
+  <div className="rps-battlefooter">
+    <BattleFooter>
+      <PlayerBar left win />
+      <PlayerBar right lose />
+    </BattleFooter>
+    <LogoBox />
+  </div>
 );
 
 ReactDOM.render(

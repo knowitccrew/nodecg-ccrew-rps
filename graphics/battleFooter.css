@@ -1,7 +1,9 @@
 html, body  {
-  height: 93px;
+  /* height: 93px; */
+  /* height: 100%; */
   width: 100%;
-  margin: 0
+  margin: 0;
+  overflow: hidden;
 }
 
 .valign {
@@ -12,6 +14,11 @@ html, body  {
 }
 
 .ccrew-battlefooter {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
   height: 93px;
 
   background-color: black;
@@ -32,6 +39,7 @@ html, body  {
 .ccrew-battlefooter .ccrew-battlefooter-bar {
   height: 100%;
   width: 50%;
+  width: 37%;
 
   display: inline-block;
 
@@ -44,5 +52,51 @@ html, body  {
 }
 
 .ccrew-battlefooter .ccrew-battlefooter-bar-lose {
-  background-color: crimson;
+  background-color: darkred;
+}
+
+/* -------------------------------------------------------------------------- */
+
+.ccrew-footer .ccrew-battlefooter-element {
+  /*
+  position: absolute;
+
+  display: inline-block;
+  transition: 0.7s ease-out;
+  */
+}
+
+.ccrew-footer .ccrew-battlefooter-bar-right {
+  float: right;
+  right: 0;
+}
+
+.ccrew-footer .ccrew-battlefooter-bar-middle {
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.logobox {
+  display: inline-block;
+  box-sizing: content-box;
+
+  border: 1px solid black;
+  padding: 1em;
+
+  background: white;
+  color: black;
+
+  position: absolute;
+  bottom: 0;
+  bottom: -0.75em;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 5em;
+
+}
+
+.rps-battlefooter {
+  /* overflow: hidden; */
 }
