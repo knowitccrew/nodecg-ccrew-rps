@@ -62,105 +62,6 @@ Progress.defaultProps = {
   reverse: false,
 };
 
-class Timer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { timer: props.timer, ready: false };
-
-    this.state.seconds = props.timer.remainingSeconds;
-
-    if (props.id) {
-      const { replicant = nodecg.Replicant(props.id) } = props;
-
-      const cb = timerObj => this.setState({ timer: timerObj });
-      replicant.on('change', cb);
-      this.unsubscribe = () => replicant.removeListener('change', cb);
-
-      this.replicant = replicant;
-    }
-  }
-
-  componentDidMount() {
-    // wait a little bit before adding classname so that css will trigger a
-    // transition animation:
-    setTimeout(() => this.setState({ ready: true }), 950);
-  }
-
-  componentWillUnmount() {
-    if (this.timer) {
-      clearInterval(this.timer);
-    }
-    if (this.unsubscribe) {
-      this.unsubscribe();
-    }
-  }
-
-  render() {
-    const { timer = {}, ready } = this.state
-    const { show, remainingSeconds: time, halfSecond, pause } = timer;
-    const middle = (pause || halfSecond) ? ':' : ' ';
-
-    console.log("timer is", this.state.timer);
-
-    let minutes = Math.floor(time / 60);
-    if (minutes < 10) { minutes = "0" + minutes; }
-
-    let seconds = time % 60;
-    if (seconds < 10) { seconds = "0" + seconds; }
-
-    if (!pause && !halfSecond && minutes == 0 && seconds == 0) {
-      // If the time's up then blink together with the separator:
-      minutes = '';
-      seconds = '';
-    }
-
-    const showClass = (ready && show) ? 'show' : 'hide';
-    return (
-      <span className={`timer ${showClass}`}>
-        <span>{minutes}</span>
-        <span>{middle}</span>
-        <span>{seconds}</span>
-      </span>
-    );
-  }
-}
-
-Timer.defaultProps = {
-  timer: {
-    show: true,
-    active: false,
-    totalSeconds: 60 * 45,
-    remainingSeconds: 60,
-  },
-};
-
-class TeamBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { show: false };
-  }
-
-  componentDidMount() {
-    // wait a little bit before adding classname so that css will trigger a
-    // transition animation:
-    setTimeout(() => this.setState({ show: true }), 100);
-  }
-
-  render() {
-    const { backgroundColor } = this.props;
-    const { show } = this.state;
-    const className = show ? 'show' : '';
-
-    return (
-      <div id="teambar" style={{ backgroundColor }}>
-        <span><span className={`blue_team_name ${className}`}>BLUE TEAM</span>&emsp;<Progress id="blue_progress"/></span>
-        <Timer id="timer_main" />
-        <span><Progress id="red_progress" reverse />&emsp;<span className={`red_team_name ${className}`}>RED TEAM</span></span>
-      </div>
-    );
-  }
-}
-
 class WaitForShow extends React.Component {
   constructor(props) {
     super(props);
@@ -261,20 +162,33 @@ class HeaderPart extends React.Component {
 }
 
 class RPSHeader extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      p1Score: 2,
+      p2Score: 2,
+    };
+  }
+
   render() {
+    const { p1Score, p2Score } = this.state;
+
+    // Hmm! Dette burde egentlig bare komme som props, er jo det progress skal bruke :-)
+    // TODO: Må endre Progress til å ta array av true/false...
+
     return (
       <WaitForShow ms={500}>
         <Header>
           <HeaderPart left>
             Player one
-            <Progress completed={3} stages={7} />
+            &ensp;<Progress completed={p1Score} stages={7} />
           </HeaderPart>
           <HeaderPart middle>
-            1 score 1
+            {p1Score} score {p2Score}
           </HeaderPart>
           <HeaderPart right>
-            <Progress completed={3} stages={7} reverse />
-            Player two
+            <Progress completed={p2Score} stages={7} reverse />
+            &ensp;Player two
           </HeaderPart>
         </Header>
       </WaitForShow>
