@@ -29,7 +29,7 @@ const reset_game = ({ game }) => {
 
 const possibleHands = ['rock', 'paper', 'scissors'];
 
-const player_hand = ({ player, data, hands }) => {
+const player_hand = ({ player, data, hands, nodecg }) => {
   if (!possibleHands.includes(data)) {
     console.error(`Got bad hand? "${data}"`);
     return;
@@ -38,8 +38,10 @@ const player_hand = ({ player, data, hands }) => {
   let { p1, p2 } = hands.value;
   if (player === 1) {
     p1 = data;
+    nodecg.sendMessage('player1_hand_anim', data);
   } else if (player === 2) {
     p2 = data;
+    nodecg.sendMessage('player2_hand_anim', data);
   } else {
     console.error(`Got bad player? "${player}"`);
     return;

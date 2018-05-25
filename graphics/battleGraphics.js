@@ -97,17 +97,37 @@ const Scissors = ({ left, right }) => left ?
 class RPSBattleGraphics extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      graphics: [],
+    };
+
+    nodecg.listenFor('player1_hand_anim', (which) => {
+      console.log("got p1", which);
+      this.setState(state => {
+        console.log("state", state);
+        const graphics = state.graphics.slice();
+        graphics.push(<Rock left />);
+        return { graphics };
+      });
+    });
+
+    nodecg.listenFor('player2_hand_anim', (which) => {
+      console.log("got p2", which);
+      this.setState(state => {
+        console.log("state", state);
+        const graphics = state.graphics.slice();
+        graphics.push(<Rock right />);
+        return { graphics };
+      });
+    });
+
   }
 
   render() {
+    const { graphics } = this.state;
     return (
       <div>
-        <Rock left />
-        <Rock right />
-        <Paper left />
-        <Paper right />
-        <Scissors left />
-        <Scissors right />
+        {graphics}
       </div>
     );
   }

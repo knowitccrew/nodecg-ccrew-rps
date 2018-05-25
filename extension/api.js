@@ -22,13 +22,13 @@ module.exports = function (nodecg) {
 
   app.get(`/${ns}/api/player1_hand`, (req, res) => {
     const { data } = req.query;
-    player_hand({ player: 1, data, hands });
+    player_hand({ player: 1, data, hands, nodecg });
     res.send('OK!');
   });
 
   app.get(`/${ns}/api/player2_hand`, (req, res) => {
     const { data } = req.query;
-    player_hand({ player: 2, data, hands });
+    player_hand({ player: 2, data, hands, nodecg });
     res.send('OK!');
   });
 
