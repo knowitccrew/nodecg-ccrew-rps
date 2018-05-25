@@ -82,8 +82,8 @@
 
 .ccrew-circle {
   display: inline-block;
-  width: 1em;
-  height: 1em;
+  width: .8em;
+  height: .8em;
   border-radius: 0.5em;
   margin: 0 0.25em;
   background-color: #666;
@@ -124,6 +124,10 @@
 
 /* -------------------------------------------------------------------------- */
 
+.rps-progress {
+  vertical-align: middle;
+}
+
 .ccrew-header {
   position: absolute;
   top: 0;
@@ -134,12 +138,12 @@
   overflow: hidden;
 
   font-size: 34px;
+  font-size: 1.74rem;
 
   background-color: black;
   color: white;
 
   font-family: "Raleway";
-  font-weight: bold;
 }
 
 .ccrew-header .ccrew-header-element {

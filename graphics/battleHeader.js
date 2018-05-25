@@ -62,7 +62,7 @@ class RPSProgress extends React.Component {
       }
     });
 
-    const className = show ? 'show' : '';
+    const className = show ? 'rps-progress show' : 'rps-progress';
     return <span id={id} className={className}>{reverse ? circles.slice().reverse() : circles}</span>;
   }
 }
@@ -173,6 +173,8 @@ class HeaderPart extends React.Component {
     );
   }
 }
+
+const VAlign = ({ children }) => <div className="valign">{children}</div>;
 
 class RPSBattleHeader extends React.Component {
   constructor(props) {
