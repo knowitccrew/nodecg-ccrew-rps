@@ -177,34 +177,27 @@ class HeaderPart extends React.Component {
 class RPSBattleHeader extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      p1Score: 2,
-      p2Score: 2,
-    };
   }
 
   render() {
-    const { p1Score, p2Score } = this.state;
+    const { winnerPerRound } = this.props;
 
-    // Hmm! Dette burde egentlig bare komme som props, er jo det progress skal bruke :-)
-    // TODO: Må endre Progress til å ta array av true/false...
+    const rounds = winnerPerRound.slice();
+    const scorep1 = rounds.filter(winner => winner === 1).length;
+    const scorep2 = rounds.filter(winner => winner === 2).length;
 
     return (
       <WaitForShow ms={500}>
         <Header>
           <HeaderPart left>
             Player one&nbsp;
-            <InjectReplicants replicantIds={{ rps_game: 'winnerPerRound' }} style={{ display: 'inline-block' }}>
-              <RPSProgress player={1} completed={p2Score} stages={7} />
-            </InjectReplicants>
+            <RPSProgress player={1} stages={7} winnerPerRound={winnerPerRound} />
           </HeaderPart>
-          <HeaderPart middle>
-            {p1Score} score {p2Score}
-          </HeaderPart>
+
+          <HeaderPart middle> {scorep1} score {scorep2} </HeaderPart>
+
           <HeaderPart right>
-            <InjectReplicants replicantIds={{ rps_game: 'winnerPerRound' }} style={{ display: 'inline-block' }}>
-              <RPSProgress player={2} completed={p2Score} stages={7} reverse />
-            </InjectReplicants>
+            <RPSProgress player={2} stages={7} winnerPerRound={winnerPerRound} reverse />
             &ensp;Player two
           </HeaderPart>
         </Header>
@@ -213,8 +206,12 @@ class RPSBattleHeader extends React.Component {
   }
 }
 
+RPSBattleHeader.defaultProps = {
+  winnerPerRound: [],
+};
+
 ReactDOM.render(
-  <InjectReplicants replicantIds={{ background_color: 'backgroundColor' }}>
+  <InjectReplicants replicantIds={{ rps_game: 'winnerPerRound' }}>
     <RPSBattleHeader />
   </InjectReplicants>,
   document.getElementById('root')
