@@ -8,15 +8,25 @@ body, html {
 }
 
 .rps-left-rock {
-  left: -150px;
-  top: 40%;
+  left: -200px;
+  top: 80%;
   animation: left-entrance 2s;
+}
+
+.rps-left-paper {
+  left: -200px;
+  top: 0%;
+  animation: left-entrance 5s;
+}
+
+.rps-left-scissors {
+  left: -200px;
+  top: 50%;
+  animation: left-entrance 3s;
 }
 
 @keyframes left-entrance {
   0% {
-    left: -150px;
-    top: 60%;
     opacity: 1;
   }
 

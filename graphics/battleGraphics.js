@@ -84,7 +84,15 @@ class FooterPart extends React.Component {
 
 const Rock = ({ left, right }) => left ?
     <img src="./assets/rps-left-rock.png" className="rps-gr rps-left-rock" /> :
-    <img src="./assets/rps-right-rock.png" className="rps-gr rps-right-right" />;
+    <img src="./assets/rps-right-rock.png" className="rps-gr rps-right-paper" />;
+
+const Paper = ({ left, right }) => left ?
+    <img src="./assets/rps-left-paper.png" className="rps-gr rps-left-paper" /> :
+    <img src="./assets/rps-right-paper.png" className="rps-gr rps-right-paper" />;
+
+const Scissors = ({ left, right }) => left ?
+    <img src="./assets/rps-left-scissors.png" className="rps-gr rps-left-scissors" /> :
+    <img src="./assets/rps-right-scissors.png" className="rps-gr rps-right-scissors" />;
 
 class RPSBattleGraphics extends Component {
   constructor(props) {
@@ -96,6 +104,10 @@ class RPSBattleGraphics extends Component {
       <div>
         <Rock left />
         <Rock right />
+        <Paper left />
+        <Paper right />
+        <Scissors left />
+        <Scissors right />
       </div>
     );
   }
