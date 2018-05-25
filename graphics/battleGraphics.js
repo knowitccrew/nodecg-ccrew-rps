@@ -101,12 +101,18 @@ class RPSBattleGraphics extends Component {
       graphics: [],
     };
 
+    const thingToComponent = {
+      rock: (props) => <Rock {...props} />,
+      paper: (props) => <Paper {...props} />,
+      scissors: (props) => <Scissors {...props} />,
+    };
+
     nodecg.listenFor('player1_hand_anim', (which) => {
       console.log("got p1", which);
       this.setState(state => {
         console.log("state", state);
         const graphics = state.graphics.slice();
-        graphics.push(<Rock left />);
+        graphics.push(thingToComponent[which]({ left: true }));
         return { graphics };
       });
     });
@@ -116,7 +122,7 @@ class RPSBattleGraphics extends Component {
       this.setState(state => {
         console.log("state", state);
         const graphics = state.graphics.slice();
-        graphics.push(<Rock right />);
+        graphics.push(thingToComponent[which]({ right: true }));
         return { graphics };
       });
     });
