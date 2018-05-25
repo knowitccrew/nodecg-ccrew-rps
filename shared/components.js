@@ -585,7 +585,7 @@ class Footer extends Component {
 
     const innerClasses = ['ccrew-footer-inner', innerClassName];
     if (valign) {
-      innerClasses.poush('valign');
+      innerClasses.push('valign');
     }
 
     return (
