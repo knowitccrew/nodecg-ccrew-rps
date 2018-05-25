@@ -61,9 +61,9 @@ module.exports = function (nodecg) {
     set_round_win({ data, game });
   });
 
-  nodecg.listenFor('reset_game', (data) => {
+  nodecg.listenFor('reset_game', () => {
     console.log(`Got reset_game: "${data}"`);
-    reset_game({ data, game });
+    reset_game({ game, nodecg });
   });
 
 };

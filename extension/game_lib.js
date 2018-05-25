@@ -22,9 +22,11 @@ const set_round_win = ({ data, game }) => {
   }
 };
 
-const reset_game = ({ game }) => {
+const reset_game = ({ game, nodecg }) => {
   console.log('Got reset_game');
   game.value = [];
+  // this will remove the current winner/loser graphics:
+  nodecg.sendMessage('round_winner_anim', null);
 };
 
 const possibleHands = ['rock', 'paper', 'scissors'];

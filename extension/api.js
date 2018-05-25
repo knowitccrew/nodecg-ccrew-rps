@@ -10,7 +10,7 @@ module.exports = function (nodecg) {
   const hands = nodecg.Replicant('rps_hands', { defaultValue: { p1: null, p2: null } });
 
   app.get(`/${ns}/api/reset_game`, (req, res) => {
-    reset_game({ game });
+    reset_game({ game, nodecg });
     res.send('OK!');
   });
 
