@@ -84,7 +84,7 @@ class FooterPart extends React.Component {
 
 const Rock = ({ left, right }) => left ?
     <img src="./assets/rps-left-rock.png" className="rps-gr rps-left-rock" /> :
-    <img src="./assets/rps-right-rock.png" className="rps-gr rps-right-paper" />;
+    <img src="./assets/rps-right-rock.png" className="rps-gr rps-right-rock" />;
 
 const Paper = ({ left, right }) => left ?
     <img src="./assets/rps-left-paper.png" className="rps-gr rps-left-paper" /> :

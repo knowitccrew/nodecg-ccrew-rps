@@ -1,10 +1,17 @@
 body, html {
   margin: 0;
+  margin-top: 300px;
   overflow: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .rps-gr {
   position: absolute;
+  animation-delay: 3s;
 }
 
 .rps-left-rock {
@@ -40,6 +47,44 @@ body, html {
 
   100% {
     left: 100%;
+    top: 30%;
+    opacity: 0;
+  }
+}
+
+.rps-right-rock {
+  right: -200px;
+  top: 80%;
+  animation: right-entrance 2s;
+}
+
+.rps-right-paper {
+  right: -200px;
+  top: 30%;
+  animation: right-entrance 5s;
+}
+
+.rps-right-scissors {
+  right: -200px;
+  top: 60%;
+  animation: right-entrance 3s;
+}
+
+@keyframes right-entrance {
+  0% {
+    opacity: 1;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  50% {
+    top: 20%;
+  }
+
+  100% {
+    right: 100%;
     top: 30%;
     opacity: 0;
   }
