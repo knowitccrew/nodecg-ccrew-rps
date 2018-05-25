@@ -94,6 +94,23 @@ const Scissors = ({ left, right }) => left ?
     <img src="./assets/rps-left-scissors.png" className="rps-gr rps-left-scissors" /> :
     <img src="./assets/rps-right-scissors.png" className="rps-gr rps-right-scissors" />;
 
+class SmartThing extends Component {
+  constructor(props) {
+    super(props);
+    setTimeout(() => props.destructor(this), props.timeout);
+  }
+
+  render() {
+    return this.props.children;
+  }
+};
+
+SmartThing.defaultProps = {
+  children: [],
+  destructor: () => ({}),
+  timeout: 6000,
+};
+
 class RPSBattleGraphics extends Component {
   constructor(props) {
     super(props);
@@ -107,12 +124,32 @@ class RPSBattleGraphics extends Component {
       scissors: (props) => <Scissors {...props} />,
     };
 
+    const destructor = (obj) => {
+      console.log("destructor!", obj);
+      this.setState(state => {
+        const graphics = state.graphics.slice();
+        const index = graphics.indexOf(obj);
+        if (index > -1) {
+          graphics.splice(index, 1);
+        } else {
+          console.log("not found :-(");
+        }
+        return { graphics };
+      });
+    };
+
     nodecg.listenFor('player1_hand_anim', (which) => {
       console.log("got p1", which);
       this.setState(state => {
         console.log("state", state);
         const graphics = state.graphics.slice();
-        graphics.push(thingToComponent[which]({ left: true }));
+        // const element = (
+        //   <SmartThing destructor={destructor} timeout={1000}>
+        //     {thingToComponent[which]({ left: true })}
+        //   </SmartThing>
+        // );
+        const element = thingToComponent[which]({ left: true });
+        graphics.push(element);
         return { graphics };
       });
     });
