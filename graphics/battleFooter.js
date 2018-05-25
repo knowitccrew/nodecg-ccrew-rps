@@ -128,9 +128,7 @@ class RPSBattleFooter extends Component {
 }
 
 ReactDOM.render(
-  <InjectReplicants replicantIds={{ 'background_color': 'backgroundColor' }}>
-    <RPSBattleFooter />
-  </InjectReplicants>,
+  <RPSBattleFooter />,
   document.getElementById('root')
 );
 
