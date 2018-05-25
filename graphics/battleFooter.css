@@ -83,7 +83,6 @@ html, body  {
   box-sizing: content-box;
 
   border: 1px solid black;
-  padding: 1em;
 
   background: white;
   color: black;
@@ -95,8 +94,13 @@ html, body  {
   left: 50%;
   transform: translateX(-50%);
 
-  font-size: 5em;
+  font-size: 1em;
+  padding: 5em;
 
+}
+
+.logobox img {
+  width: 200px;
 }
 
 .rps-battlefooter {

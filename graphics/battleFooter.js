@@ -89,7 +89,9 @@ const BattleFooter = ({ children }) => (
 );
 
 const LogoBox = () => (
-  <div className="logobox">knowit</div>
+  <div className="logobox">
+    <img src="assets/knowit_logo_black_rgb.png" />
+  </div>
 );
 
 const RPSBattleFooter = () => (
