@@ -44,6 +44,7 @@ class InjectReplicants extends React.Component {
     const elements = Array.isArray(children) ? children : [children];
 
     const extraProps = Object.assign({}, this.props);
+    delete extraProps.replicantIds;
     delete extraProps.children;
 
     return (
