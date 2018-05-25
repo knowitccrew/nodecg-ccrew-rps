@@ -1,0 +1,36 @@
+body, html {
+  margin: 0;
+  overflow: hidden;
+}
+
+.rps-gr {
+  position: absolute;
+}
+
+.rps-left-rock {
+  left: -150px;
+  top: 40%;
+  animation: left-entrance 2s;
+}
+
+@keyframes left-entrance {
+  0% {
+    left: -150px;
+    top: 60%;
+    opacity: 1;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  50% {
+    top: 20%;
+  }
+
+  100% {
+    left: 100%;
+    top: 30%;
+    opacity: 0;
+  }
+}
