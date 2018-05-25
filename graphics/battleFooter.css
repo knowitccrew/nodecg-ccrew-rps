@@ -45,14 +45,35 @@ html, body  {
 
   text-transform: uppercase;
   background-color: black;
+  color: black;
+
+  transition: background-color .3s, color .3s;
 }
 
 .ccrew-battlefooter .ccrew-battlefooter-bar-win {
   background-color: darkcyan;
+  color: white;
+  /*
+  animation: shortlived 2s;
+  animation-fill-mode: forwards;
+  */
 }
 
 .ccrew-battlefooter .ccrew-battlefooter-bar-lose {
   background-color: darkred;
+  color: white;
+
+  /*
+  animation: shortlived 2s;
+  animation-fill-mode: forwards;
+  */
+}
+
+@keyframes shortlived {
+  100% {
+    background-color: black;
+    color: black;
+  }
 }
 
 /* -------------------------------------------------------------------------- */
