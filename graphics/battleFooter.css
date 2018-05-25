@@ -113,15 +113,27 @@ html, body  {
   bottom: -0.75em;
 
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(100%);
 
   font-size: 1em;
   padding: 5em;
 
+  animation: slidein 1s 0.5s;
+  animation-fill-mode: forwards; /* stay in place */
 }
 
 .logobox img {
   width: 200px;
+}
+
+@keyframes slidein {
+  0% {
+    transform: translateX(-50%) translateY(100%);
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(0%);
+  }
 }
 
 .rps-battlefooter {
