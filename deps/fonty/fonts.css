@@ -1,0 +1,46 @@
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Raleway'),
+       local('Raleway Regular'),
+       local('Raleway-Regular'),
+       url(Raleway-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Raleway Bold'),
+       local('Raleway-Bold'),
+       url(Raleway-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway Bold'),
+       local('Raleway-Bold'),
+       url(Raleway-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Ubuntu Mono';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Ubuntu Mono'),
+       local('UbuntuMono'),
+       local('UbuntuMono-Regular'),
+       url(UbuntuMono-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Ubuntu Mono';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Ubuntu Mono Bold'),
+       local('UbuntuMono-Bold'),
+       url(UbuntuMono-Bold.ttf) format('truetype');
+}
