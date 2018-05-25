@@ -65,7 +65,7 @@ const winCalc = {
   'scissors_scissors': null,
 }
 
-const finalize = ({ hands, game }) => {
+const finalize = ({ hands, game, nodecg }) => {
   const { p1, p2 } = hands.value;
   if (!p1 || !p2) {
     console.log("Can't finalize without two good hands:", hands.value);
@@ -78,16 +78,19 @@ const finalize = ({ hands, game }) => {
 
   } else if (winner === null) {
     console.log(hands.value, "tie!");
+    nodecg.sendMessage('round_winner_anim', null);
 
   } else if (winner === 1) {
     console.log(hands.value, "Player one wins!");
     set_round_win({ data: 1, game });
     hands.value = { p1: null, p2: null };
+    nodecg.sendMessage('round_winner_anim', 1);
 
   } else if (winner === 2) {
     console.log(hands.value, "Player two wins!");
     set_round_win({ data: 2, game });
     hands.value = { p1: null, p2: null };
+    nodecg.sendMessage('round_winner_anim', 2);
 
   } else {
     // not supposed to happen:

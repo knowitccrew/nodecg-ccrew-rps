@@ -94,15 +94,38 @@ const LogoBox = () => (
   </div>
 );
 
-const RPSBattleFooter = () => (
-  <div className="rps-battlefooter">
-    <BattleFooter>
-      <PlayerBar right win />
-      <PlayerBar left lose />
-    </BattleFooter>
-    <LogoBox />
-  </div>
-);
+class RPSBattleFooter extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      left: null,
+      right: null,
+    };
+
+    nodecg.listenFor('round_winner_anim', (player) => {
+      console.log("round winner is:", player);
+      if (player == null) {
+        this.setState({ right: null, left: null });
+      } else {
+        this.setState({ right: player === 1, left: player === 2 });
+      }
+    });
+  }
+
+  render() {
+    const { right: rightWin, left: leftWin } = this.state;
+    return (
+      <div className="rps-battlefooter">
+        <BattleFooter>
+          <PlayerBar right win={rightWin} lose={rightWin != null && !rightWin} />
+          <PlayerBar left win={leftWin} lose={leftWin != null && !leftWin}  />
+        </BattleFooter>
+        <LogoBox />
+      </div>
+    );
+  }
+}
 
 ReactDOM.render(
   <InjectReplicants replicantIds={{ 'background_color': 'backgroundColor' }}>

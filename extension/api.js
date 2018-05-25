@@ -33,7 +33,7 @@ module.exports = function (nodecg) {
   });
 
   app.get(`/${ns}/api/finalize`, (req, res) => {
-    finalize({ hands, game });
+    finalize({ hands, game, nodecg });
     res.send('OK!');
   });
 
